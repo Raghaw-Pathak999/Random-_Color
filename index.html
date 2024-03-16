@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random color</title>
+    <style>
+
+        .btns{
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            gap: 160px;
+            margin: auto;
+            margin-top: 120px;
+        }
+
+        .ButtonStart{
+            background-color: #222222;
+            color: whitesmoke;
+            padding: 20px 40px;
+            border-radius: 20%;
+            font-weight: bold;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            border: 4px solid rgb(255, 123, 28);
+        }
+        
+        .ButtonStart:hover{
+            scale: 1.1;
+        }
+
+        .ButtonStop{
+            background-color: #222222;
+            color: whitesmoke;
+            padding: 20px 40px;
+            font-weight: bold;
+            border-radius: 20%;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            border: 4px solid rgb(255, 123, 28);
+        }
+
+        .ButtonStop:hover{
+            scale: 1.1;
+        }
+
+        body{
+            background-color: #ffa142;
+        }
+
+        h3{
+            display: flex;
+            background-color: hsl(0, 0%, 91%);
+            align-items: center;
+            padding: 50px;
+            text-decoration:line-through ;
+            font-weight: bold;
+            cursor: pointer;
+            width: 600px ;
+            justify-content: center;
+            margin: auto;
+            border-radius: 0% 0% 250% 250%;
+            margin-top: 160px;
+        }
+
+        h3:hover{
+            padding: 90px;
+            border-radius: 0% 0% 250% 250%;
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="btns" >
+        <button class="ButtonStart">Start</button>
+        <button class="ButtonStop">Stop</button>
+    </div>
+    <h3>Click Start button to Chnage ramdom color In each Second</h3>
+</body>
+<script>
+     const randomColor = function () {
+        let hex = "1233456789ABCDEF";
+        let colorValue = "#";
+        for (let i = 0; i < 6; i++) {
+            colorValue += hex[Math.floor(Math.random()*16)];
+        }
+        return colorValue;
+     }
+
+     let interVAlid 
+
+     let StartChanegColor = function () {
+        if(!interVAlid){
+            interVAlid = setInterval(CHANGEautoColor, 800)
+        }
+
+        function CHANGEautoColor() {
+           StopButton = document.body.style.backgroundColor = randomColor();
+            // console.log('color random');
+        }
+     }
+
+     let StopChanegColor = function () {
+        clearInterval(interVAlid)
+        // console.log('stop');
+        interVAlid = null
+     }
+
+ document.querySelector('.ButtonStart').addEventListener('click', StartChanegColor)
+    
+ document.querySelector('.ButtonStop').addEventListener('click', StopChanegColor)
+
+</script>
+</html>
